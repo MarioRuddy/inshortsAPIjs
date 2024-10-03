@@ -1,14 +1,14 @@
-const url = 'http://inshorts.com/api/en/search/trending_topics/science';
+const url = 'https://inshortsapi.vercel.app/news?category=national';
 
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    const articles = data.data;
+    const articles = data.data;  // The array of articles is under 'data'
     const newsList = document.querySelector('#newsList');
 
     articles.forEach(article => {
       const item = document.createElement('li');
-      const image = article.image_url ? `<img src="${article.image_url}" alt="${article.title}" />` : '';
+      const image = article.imageUrl ? `<img src="${article.imageUrl}" alt="${article.title}" />` : '';  // Corrected imageUrl field
       item.innerHTML = `
         <h2>${article.title}</h2>
         <p>${article.content}</p>
@@ -16,7 +16,7 @@ fetch(url)
           <li><strong>Author:</strong> ${article.author}</li>
           <li><strong>Date:</strong> ${article.date}</li>
           <li><strong>Time:</strong> ${article.time}</li>
-          <li><strong>URL:</strong> <a href="${article.url}" target="_blank">${article.url}</a></li>
+          <li><strong>URL:</strong> <a href="${article.readMoreUrl}" target="_blank">${article.readMoreUrl}</a></li>  <!-- Corrected the URL field -->
         </ul>
         ${image}
       `;
