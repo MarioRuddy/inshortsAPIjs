@@ -1,4 +1,4 @@
-const url = 'https://inshorts.deta.dev/news?category=science';
+const url = 'http://inshorts.com/api/en/search/trending_topics/science';
 
 fetch(url)
   .then(response => response.json())
